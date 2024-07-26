@@ -1,0 +1,121 @@
+<!--<h2>{{ 'dispensingPatients.title' | message }}</h2>-->
+<h2 ng-if="vm.orderingFacility">{{'orderFulfillment.fulfillOrdersAt' | message: {'facility':  vm.orderingFacility.name} }}</h2>
+<h2 ng-if="!vm.orderingFacility">{{ 'dispensingPrescriptions.title' | message }}</h2>
+
+<form class="sidebar" ng-submit="vm.searchPatients()">
+  <!-- <label for="patientId">{{ 'dispensingPrescriptions.patientId' | message }}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.nationalId">
+  <label for="patientType">{{ 'dispensingPrescriptions.patientType' | message }}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientType">
+  <label for="lastName">{{ 'dispensingPrescriptions.lastName' | message }}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.lastName">
+  <label for="firstName">{{ 'dispensingPrescriptions.firstName' | message }}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.firstName"> -->
+  <label for="orderingFacility">{{'dispensingPatients.patientNumber' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.patientNumber">
+  <label for="lastName">{{'dispensingPatients.lastName' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.lastName">
+  <label for="firstName">{{'dispensingPatients.firstName' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.firstName">
+  <label for="nationalidNumber">{{'dispensingPatients.nationalidNumber' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.nationalId">
+  <label for="dateofBirth">{{'dispensingPatients.dateofBirth' | message}}</label>
+  <input id="dateOfBirth" type="date" style="width: 90px;" ng-model="vm.patientParams.dateOfBirth" max-date="vm.maxDate" inputmode="none"/>
+  <label for="contactNumber">{{'dispensingPatients.contactNumber' | message}}</label>
+  <input class="form-control" value="+266 " type="text" style="width: 150px;" ng-model="vm.patientParams.contactNumber">
+  <fieldset class="form-group">
+    <legend>{{'dispensingPatients.facility' | message}}</legend>
+    <label class="radio">
+        <input type="radio" ng-model="vm.patientParams.facilityLocation" ng-value="true" ng-required="vm.patientParams.facilityLocation === undefined"/>
+        {{'dispensingPatients.facilityLocal' | message}}
+    </label>
+    <label class="radio">
+        <input type="radio" ng-model="vm.patientParams.facilityLocation" ng-value="false" ng-required="vm.patientParams.facilityLocation === undefined"/>
+        {{'dispensingPatients.facilityNational' | message}}
+    </label>
+  </fieldset>
+
+  <input type="submit" class="btn btn-primary" value="{{'dispensingPrescriptions.search' | message}}"/>
+</form>
+
+<section class="openlmis-table-container">
+  <openlmis-sort options="vm.options"/>
+  <!-- <form ng-submit="vm.loadOrders()" >
+    <label for="orderingFacility">Patient Number</label>
+    <input class="form-control" type="text" style="width: 150px;">
+    <label>Last Name</label>
+    <input class="form-control" type="text" style="width: 150px;">
+    <label>First Name</label>
+    <input class="form-control" type="text" style="width: 150px;">
+    <label>Nation ID Number</label>
+    <input class="form-control" type="text" style="width: 150px;">
+    <label>Date of Birth</label>
+    <input id="lineItem.occurredDate" type="date" style="width: 90px;" ng-model="lineItem.occurredDate"
+      ng-change="vm.validateDate(lineItem)" max-date="vm.maxDate" required inputmode="none"/>
+    <label>Contact Number</label>
+    <input class="form-control" value="+266 " type="text" style="width: 150px;">
+    <input type="submit" class="btn btn-primary" value="{{'orderFulfillment.search' | message}}"/>
+  </form> -->
+  <section class="is-primary">
+    <form class="form-inline" ng-submit="vm.addProduct()" name="productForm">
+        <button type="button" ui-sref="openlmis.dispensing.patients.form" class="add">{{'dispensingPrescriptions.addPatient' | message}}</button>
+    </form>
+  </section>
+  <table>
+    <!-- <caption ng-if="!vm.prescriptions.length">{{'dispensingPrescriptions.prescriptions.error' | message}}</caption> -->
+    <thead>
+    <tr>
+      <th>{{'dispensingPrescriptions.patientNumber' | message}}</th>
+      <th>{{'dispensingPrescriptions.lastName' | message}}</th>
+      <th>{{'dispensingPrescriptions.firstName' | message}}</th>
+      <th>{{'dispensingPrescriptions.patientType' | message}}</th>
+      <th>{{'dispensingPrescriptions.followUpDate' | message}}</th>
+      <th>{{'dispensingPrescriptions.createdDate' | message}}</th>
+      <th>{{'dispensingPrescriptions.dateCaptured' | message}}</th>
+      <th>{{'dispensingPrescriptions.issueDate' | message}}</th>
+      <th>{{'dispensingPrescriptions.status' | message}}</th>
+      <th class="col-sticky sticky-right">{{'dispensingPrescriptions.actions' | message}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="patient in vm.patientsData">
+      <td>{{patient.patientNumber}}</td>
+      <td>{{patient.personDto.lastName}}</td>
+      <td>{{patient.personDto.firstName}}</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td>
+        <button type="button" class="btn btn-primary add" ui-sref="openlmis.dispensing.prescriptions.form">
+          {{'dispensingPrescriptions.addPrescription' | message}}
+        </button>
+        <!-- <button class="btn btn-primary" ui-sref="openlmis.dispensing.prescriptions.form">
+          {{'dispensingPrescriptions.viewPrescription' | message}}
+        </button> -->
+      </td>
+    </tr>
+
+    <tr ng-repeat="patient in vm.patientsData">
+      <td>F2011/20240711/00045</td>
+      <td>Demo</td>
+      <td>Dan</td>
+      <td>Out</td>
+      <td>09/08/2024</td>
+      <td>09/07/2024</td>
+      <td>09/07/2024</td>
+      <td> </td>
+      <td>Initiated</td>
+      <td>
+        <button class="btn btn-primary" ui-sref="openlmis.dispensing.prescriptions.form2">
+          {{'dispensingPrescriptions.viewPrescription' | message}}
+        </button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <!-- <openlmis-pagination/> -->
+</section>

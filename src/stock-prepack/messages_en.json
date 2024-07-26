@@ -1,0 +1,8 @@
+{
+  "stockPrepack.title": "Prepack for ${facility}",
+  "stockPrepack.prepack": "Prepack",
+  "stockPrepack.proceed": "Create Prepacks",
+  "stockPrepack.program": "Program",
+  "stockPrepack.action": "Action",
+  "stockPrepack.noProgramAvailable": "There are no programs for this facility. Please contact the Admin."
+}

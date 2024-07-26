@@ -1,0 +1,13 @@
+<div class="openlmis-toolbar" ng-hide='vm.prepack.status === "Authorised" || vm.prepack.status === "Cancelled"' >
+  <div class="button-group">
+    <button class="danger" ng-disabled="!vm.prepackLineItems.length" ng-click="vm.removeDisplayItems()">
+      {{'prepackUpdate.clear'|message}}
+    </button>
+  </div>
+  <button class="primary" ng-class="{'is-offline':vm.offline()}"  ng-click="vm.editPrepack()">
+    {{'prepackUpdate.save'|message}}
+  </button>
+  <button class="primary" ng-class="{'is-offline':vm.offline()}"  ng-click="vm.changePrepackStatus('Cancelled')">
+    {{'prepackUpdate.cancel'|message}}
+  </button>
+</div>

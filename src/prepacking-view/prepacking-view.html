@@ -1,0 +1,29 @@
+<h2>
+    {{'prepackingView.title' | message:({'facility': vm.facility.name})}}
+</h2>
+
+<section class="openlmis-table-container">
+    <table suppress-tr-openlmis-invalid>
+        <thead>
+            <tr>
+                <th>{{'prepackingView.program'|message}}</th>
+                <th>{{'prepackingView.servicePoint'|message}}</th>
+                <th>{{'prepackingView.prepackingDate'|message}}</th>
+                <th>{{'prepackingView.status'|message}}</th>
+                <th>{{'prepackingView.prepackedBy'|message}}</th>
+                <th>{{'prepackingView.action'|message}}
+            </tr>
+        </thead>
+        <tbody>  
+            <caption ng-if="!vm.prepackDetailsLength">Display Available Prepacks here</caption>
+            <tr ng-repeat="item in vm.prepackDetails">
+                <td>{{item.programName}}</td>
+                <td>{{item.facilityName}}</td>
+                <td>{{item.dateCreated | openlmisDate}}</td>
+                <td>{{item.status}}</td>
+                <td>{{item.prepackerUserNames}}</td>
+                <td><button class="btn btn-primary" ng-click="vm.getPrepackLineItems(item)">{{'prepackingView.view'| message}}</button> </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

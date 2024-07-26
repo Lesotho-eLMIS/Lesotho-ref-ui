@@ -1,0 +1,96 @@
+<h2>{{'dispensingPatientForm.title' | message}}</h2>
+
+<div class="container-lg">
+    <div class="row">
+        <div class="col-sm-4">
+            <form name="newPatientForm1" class="content" ng-submit="vm.submitPatientData()">
+                <fieldset class="form-group">
+                    <label for="nationalID">{{'dispensingPatientForm.nationalID' | message}}</label>
+                    <input id="nationalID" ng-model="vm.patient.nationalID" type="text" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="firstName">{{'dispensingPatientForm.firstName' | message}}</label>
+                    <input id="firstName" ng-model="vm.patient.firstName" type="text" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="lastName">{{'dispensingPatientForm.lastName' | message}}</label>
+                    <input id="lastName" ng-model="vm.patient.lastName" type="text" required />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="nickName">{{'dispensingPatientForm.nickName' | message}}</label>
+                    <input id="nickName" ng-model="vm.patient.nickName" type="text"/>
+                </fieldset>
+                <fieldset class="form-group">
+                    <legend>{{'dispensingPatientForm.sex' | message}}</legend>
+                    <label class="radio">
+                        <input type="radio" ng-model="vm.patient.sex" ng-value="'M'" required />
+                        {{'dispensingPatientForm.male' | message}}
+                    </label>
+                    <label class="radio">
+                        <input type="radio" ng-model="vm.patient.sex" ng-value="'F'" required />
+                        {{'dispensingPatientForm.female' | message}}
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <form name="newPatientForm2" class="content" ng-submit="vm.submitPatientData()">
+                <fieldset class="form-group">
+                    <label>{{'dispensingPatientForm.dateOfBirth' | message}}</label>
+                    <input id="lineItem.occurredDate" type="date" ng-model="vm.patient.DOB"
+                        ng-change="vm.validateDate(lineItem)" max-date="vm.maxDate" required inputmode="none" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="radio">
+                        <input type="checkbox" ng-model="vm.patient.dateOfBirthEstimated" />
+                        <label>{{'dispensingPatientForm.DOBestimated' | message}}</label>
+                    </label>
+                </fieldset>
+                <fieldset class="form-group" ng-hide="true">
+                    <label for="deceased">
+                        <input type="checkbox" ng-model="vm.patient.deceased" />
+                        <label>{{'dispensingPatientForm.deceased' | message}}</label>
+                    </label>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="physicalAddress">{{'dispensingPatientForm.physicalAddress' | message}}</label>
+                    <input id="physicalAddress" ng-model="vm.patient.physicalAddress" type="text" />
+                </fieldset>
+                <fieldset class="openlmis-table-container">
+                    <label for="contact">{{'dispensingPatientForm.contact' | message}}</label>
+                    <input id="contact" ng-model="vm.patient.contact.contactValue" type="text" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="motherMaidenName">{{'dispensingPatientForm.motherMaidenName' | message}}</label>
+                    <input id="motherMaidenName" ng-model="vm.patient.motherMaidenName" type="text" />
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <form name="newPatientForm3" class="content" ng-submit="vm.submitPatientData()">
+                <fieldset class="form-group">
+                    <label for="nextOfKinNames">{{'dispensingPatientForm.nextOfKinNames' | message}}</label>
+                    <input id="nextOfKinNames" ng-model="vm.patient.nextOfKinNames" type="text" />
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="nextOfKinContact">{{'dispensingPatientForm.nextOfKinContact' | message}}</label>
+                    <input id="nextOfKinContact" ng-model="vm.patient.nextOfKinContact" type="text" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="openlmis-toolbar">
+    <button ui-sref="^">{{'dispensingPatientForm.cancel' | message}}</button>
+    <div class="button-group primary">
+        <button class="primary" form="patientForm" ng-click="vm.submitPatientData()">{{(vm.updateMode ?
+            'dispensingPatientForm.updatePatient' : 'dispensingPatientForm.createPatient') | message}}</button> <!--type="submit"-->>
+        <button ng-if="vm.updateMode && vm.pendingVerificationEmail" ng-click="vm.sendVerificationEmail()">{{
+            'dispensingPatientForm.sendVerificationEmail' | message }}</button>
+    </div>
+</div>
+
+
+
+

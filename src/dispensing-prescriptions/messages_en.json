@@ -1,0 +1,20 @@
+{
+  "dispensingPrescriptions.title": "Prescriptions",
+  "dispensingPrescriptions.patientId": "Patient ID",
+  "dispensingPrescriptions.patientNumber": "Patient Number",
+  "dispensingPrescriptions.patientType": "Patient Type",
+  "dispensingPrescriptions.search": "Search",
+  "dispensingPrescriptions.createdDate": "Date Created",
+  "dispensingPrescriptions.actions": "Actions",
+  "dispensingPrescriptions.firstName": "First Name",
+  "dispensingPrescriptions.lastName": "Last Name",
+  "dispensingPrescriptions.viewPrescription": "View Prescription",
+  "dispensingPrescriptions.dateCaptured": "Date Captured",
+  "dispensingPrescriptions.edit": "Edit",
+  "dispensingPrescriptions.addPrescription": "Add Prescription",
+  "dispensingPrescriptions.prescriptions.error": "There are no matches for Prescription.",
+  "dispensingPrescriptions.issueDate": "Issue Date",
+  "dispensingPrescriptions.status": "Status",
+  "dispensingPrescriptions.followUpDate": "Follow up Date",
+  "dispensingPrescriptions.addPatient": "Add Patient"
+}

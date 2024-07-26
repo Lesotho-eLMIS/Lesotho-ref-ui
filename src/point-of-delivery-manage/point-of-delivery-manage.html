@@ -1,0 +1,206 @@
+<h2>{{ 'pointOfDeliveryManage.title' | message }}</h2>
+
+<section class="container"></section>
+<form name="podManageForm" class="sidebar" ng-submit="vm.buildPayload()">
+    <form name="podManageForm1" class="sidebar">
+        <fieldset class="form-group">
+            <label for="receivingFacility">{{'proofOfDeliveryManage.receivingFacility' | message}}</label>
+            <select id="receivingFacility" ng-model="vm.POD.receivingFacility" ng-required="!vm.supplyingFacility"
+                ng-options="facility.name for facility in vm.homeFacilities"></select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="supplyingFacility">{{'proofOfDeliveryManage.supplyingFacility' | message}}</label>
+            <select id="supplyingFacility" ng-model="vm.POD.supplyingFacility" ng-required="!vm.requestingFacility"
+                ng-options="facility.name for facility in vm.supplyingFacilities | orderBy:'name'"></select>
+        </fieldset>
+        <Fieldset>
+            <label for="referenceNo">{{'pointOfDeliveryManage.referenceNo' | message}}</label>
+            <input id="referenceNo" type="text" ng-model="vm.POD.referenceNo" maxlength="50" ng-disabled="false"
+                ng-required="true" />
+        </Fieldset>
+    </form>
+    <form name="podManageForm2" class="content" openlmis-table-filter>
+        <fieldset class="form-group">
+            <Fieldset>
+                <label for="receivedDate">{{'pointOfDeliveryManage.packingDate' | message}}</label>
+                <input id="receivedDate" type="date" max-date="vm.maxDate" ng-model="vm.POD.receivedDate" required />
+            </Fieldset>
+    
+            <Fieldset>
+                <label for="packedBy">{{'pointOfDeliveryManage.packedBy' | message}}</label>
+                <input id="packedBy" type="text" ng-model="vm.POD.packedBy" maxlength="50" required />
+            </Fieldset>
+    
+             <div>
+    
+                <section class="openlmis-table-container">
+                    <table suppress-tr-openlmis-invalid>
+                        <thead>
+                            <tr>
+                                <th>{{'pointOfDeliveryManage.shipmentType'| message}}</th>
+                                <th>{{'pointOfDeliveryManage.quantityOnWayBill'| message}}</th>
+                                <!-- <th>{{'pointOfDeliveryManage.quantityShipped'| message}}</th> -->
+                                <th>{{'proofOfDeliveryManage.quantityAccepted'| message}}</th>
+                                <!-- <th>{{'proofOfDeliveryManage.quantityRejected'| message}}</th> -->
+                                <th>{{'proofOfDeliveryManage.action'| message}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{vm.Cartons}}</td>
+                                <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                        style="width: 60px;" ng-model="vm.POD.cartonsQuantityOnWaybill"></td>
+                                <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                        style="width: 60px;" ng-model="vm.POD.cartonsQuantityAccepted"></td>
+                                <!-- <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                        style="width: 60px;" ng-model="vm.POD.cartonsQuantityRejected"></td> -->
+                                <td><button type="button"
+                                        ng-click="vm.addDiscrepancyOnModal('carton', vm.tempPOD.discrepancies)"
+                                        class="primary"><b>+ </b>{{'proofOfDeliveryManage.addDiscrepancy'|
+                                        message}}</button></td>
+                            </tr>
+                            <tr>
+                                <td>{{vm.Containers}}</td>
+                                <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                        style="width: 60px;" ng-model="vm.POD.containersQuantityOnWayBill"></td>
+                                <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                        style="width: 60px;" ng-model="vm.POD.containersQuantityAccepted"></td>
+                                <!-- <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                        style="width: 60px;" ng-model="vm.POD.containersQuantityRejected"></td> -->
+                                <td><button type="button"
+                                        ng-click="vm.addDiscrepancyOnModal('container', vm.tempPOD.discrepancies)"
+                                        class="primary"><b>+ </b>{{'proofOfDeliveryManage.addDiscrepancy'|
+                                        message}}</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+    
+            <!-- <input ng-if="!vm.tempPOD" type="submit" value="{{'pointOfDeliveryManage.submit' | message}}" /> -->
+            <!-- <input ng-if="vm.tempPOD" type="submit" value="{{'pointOfDeliveryManage.save' | message}}" /> -->
+    
+        </fieldset> 
+    </form>
+</form>
+
+</section>
+<ng-include src="'point-of-delivery-manage/point-of-delivery-manage-toolbar.html'"></ng-include>
+
+
+<!-- <form name="podManageForm" class="content" openlmis-table-filter>
+    <div row>
+        <div col>
+            <form class="sidebar" ng-submit="vm.buildPayload()">
+                <fieldset class="form-group">
+                    <label for="receivingFacility">{{'proofOfDeliveryManage.receivingFacility' | message}}</label>
+                    <select id="receivingFacility" ng-model="vm.POD.receivingFacility" ng-required="!vm.supplyingFacility"
+                        ng-options="facility.name for facility in vm.homeFacilities"></select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="supplyingFacility">{{'proofOfDeliveryManage.supplyingFacility' | message}}</label>
+                    <select id="supplyingFacility" ng-model="vm.POD.supplyingFacility" ng-required="!vm.requestingFacility"
+                        ng-options="facility.name for facility in vm.supplyingFacilities | orderBy:'name'"></select>
+                </fieldset>
+                <Fieldset>
+                    <label for="referenceNo">{{'pointOfDeliveryManage.referenceNo' | message}}</label>
+                    <input id="referenceNo" type="text" ng-model="vm.POD.referenceNo" maxlength="50" ng-disabled="false"
+                        ng-required="true" />
+                </Fieldset>
+            </form>
+        </div>
+        <div col>
+            <form class="content" openlmis-table-filter>
+                <fieldset class="form-group">
+                    <Fieldset>
+                        <label for="receivedDate">{{'pointOfDeliveryManage.packingDate' | message}}</label>
+                        <input id="receivedDate" type="date" max-date="vm.maxDate" ng-model="vm.POD.receivedDate" required />
+                    </Fieldset>
+            
+                    <Fieldset>
+                        <label for="packedBy">{{'pointOfDeliveryManage.packedBy' | message}}</label>
+                        <input id="packedBy" type="text" ng-model="vm.POD.packedBy" maxlength="50" required />
+                    </Fieldset>
+                    
+                    <Fieldset>
+                        <label for="numberOfCartons">{{'pointOfDeliveryManage.numberOfCartons' | message}}</label>
+                        <input id="numberOfCartons" type="number" min="0" step="1" oninput="validity.valid||(value='');" 
+                                ng-model="vm.POD.numberOfCartons" ng-change="vm.validateCartons()" maxlength="50" required/>
+                    </Fieldset>
+                    <Fieldset>
+                        <label for="numberOfRejectedCartons">{{'pointOfDeliveryManage.numberOfRejectedCartons' | message}}</label>
+                        <input id="numberOfRejectedCartons" type="number" min="0" step="1" oninput="validity.valid||(value='');" ng-model="vm.POD.numberOfRejectedCartons" 
+                                ng-change="vm.validateCartons()" maxlength="50" required/>
+                    </Fieldset>
+                    
+                    <Fieldset>
+                        <label for="numberOfContainers">{{'pointOfDeliveryManage.numberOfContainers' | message}}</label>
+                        <input id="numberOfContainers" type="number" min="0" step="1" oninput="validity.valid||(value='');" 
+                                ng-model="vm.POD.numberOfContainers" ng-change="vm.validateContainers()" maxlength="50" required/>
+                    </Fieldset>
+                    <Fieldset>
+                        <label for="numberOfRejectedContainers">{{'pointOfDeliveryManage.numberOfRejectedContainers' | message}}</label>
+                        <input id="numberOfRejectedContainers" type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                 ng-model="vm.POD.numberOfRejectedContainers" ng-change="vm.validateContainers()" maxlength="50" required/>
+                    </Fieldset>
+                            
+                    <Fieldset>
+                        <label for="remarks">{{'pointOfDeliveryManage.remarks' | message}}</label>
+                        <textarea id="remarks" type="text" ng-model="vm.POD.remarks" rows="2" cols="50"></textarea>
+                    </Fieldset> -->
+                    <!-- <div>
+            
+                        <section class="openlmis-table-container">
+                            <table suppress-tr-openlmis-invalid>
+                                <thead>
+                                    <tr>
+                                        <th>{{'pointOfDeliveryManage.shipmentType'| message}}</th>
+                                        <th>{{'pointOfDeliveryManage.quantityOnWayBill'| message}}</th>
+                                        < <th>{{'pointOfDeliveryManage.quantityShipped'| message}}</th> -->
+                                        <!-- <th>{{'proofOfDeliveryManage.quantityAccepted'| message}}</th>
+                                        <th>{{'proofOfDeliveryManage.quantityRejected'| message}}</th>
+                                        <th>{{'proofOfDeliveryManage.action'| message}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{vm.Cartons}}</td>
+                                        <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                                style="width: 60px;" ng-model="vm.POD.cartonsQuantityOnWaybill"></td>
+                                        <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                                style="width: 60px;" ng-model="vm.POD.cartonsQuantityAccepted"></td>
+                                        <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                                style="width: 60px;" ng-model="vm.POD.cartonsQuantityRejected"></td>
+                                        <td><button type="button"
+                                                ng-click="vm.addDiscrepancyOnModal('carton', vm.tempPOD.discrepancies)"
+                                                class="primary"><b>+ </b>{{'proofOfDeliveryManage.addDiscrepancy'|
+                                                message}}</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{vm.Containers}}</td>
+                                        <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                                style="width: 60px;" ng-model="vm.POD.containersQuantityOnWayBill"></td>
+                                        <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                                style="width: 60px;" ng-model="vm.POD.containersQuantityAccepted"></td>
+                                        <td><input type="number" min="0" step="1" oninput="validity.valid||(value='');"
+                                                style="width: 60px;" ng-model="vm.POD.containersQuantityRejected"></td>
+                                        <td><button type="button"
+                                                ng-click="vm.addDiscrepancyOnModal('container', vm.tempPOD.discrepancies)"
+                                                class="primary"><b>+ </b>{{'proofOfDeliveryManage.addDiscrepancy'|
+                                                message}}</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    </div>
+            
+                    <input ng-if="!vm.tempPOD" type="submit" value="{{'pointOfDeliveryManage.submit' | message}}" />
+                    <input ng-if="vm.tempPOD" type="submit" value="{{'pointOfDeliveryManage.save' | message}}" />
+            
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <input ng-if="!vm.tempPOD" type="submit" value="{{'pointOfDeliveryManage.submit' | message}}" />
+    <input ng-if="vm.tempPOD" type="submit" value="{{'pointOfDeliveryManage.save' | message}}" /> -->
+<!-- </form>  -->

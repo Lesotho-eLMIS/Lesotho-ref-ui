@@ -1,0 +1,11 @@
+{
+  "prepackingView.label": "View",
+  "prepackingView.title": "Prepack Lists for ${facility}",
+  "prepackingView.servicePoint" : "Service Point",
+  "prepackingView.program": "Program",
+  "prepackingView.prepackingDate": "Prepacking Date",
+  "prepackingView.prepackedBy": "Prepacked By",
+  "prepackingView.status": "Status",
+  "prepackingView.action":"Action",
+  "prepackingView.view":"View"
+}

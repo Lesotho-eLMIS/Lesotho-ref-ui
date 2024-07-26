@@ -1,0 +1,128 @@
+<div class="modal add-products-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="$hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">
+          {{'dispensingPrescriptionDetailsModal.title' | message}}
+        </h4>
+      </div>
+
+      <form class="modal-body">
+        <fieldset>
+          <label>{{'dispensingPrescriptionForm.dose' | message}}</label>
+          <input type="number" min="0" step="1" oninput="validity.valid||(value='');" style="width: 40px;"/>
+        </fieldset>
+        <fieldset>
+          <label for="contactType">Select Units:</label>
+          <select id="contactType" name="contactType">
+              <option ng-model="contact.phon" value="phone"> </option>
+              <option ng-model="contact.email" value="email">Capsule(s)</option>
+              <option ng-model="contact.phone" value="phone">Tablet(s)</option>
+              <option ng-model="contact.phone" value="phone">ml</option>
+              <option ng-model="contact.phon" value="phone">mg</option>
+              <option ng-model="contact.email" value="email">IU</option>
+              <option ng-model="contact.phone" value="phone">Drop</option>
+              <option ng-model="contact.phone" value="phone">Tablespoon</option>
+              <option ng-model="contact.phon" value="phone">Teaspoon</option>
+              <option ng-model="contact.email" value="email">Unit(s)</option>
+              <option ng-model="contact.phone" value="phone">Puff(s)</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label for="contactType">Select Frequency:</label>
+          <select id="contactType" name="contactType">
+              <option ng-model="contact.phon" value="phone"> </option>
+              <option ng-model="contact.email" value="email">Immediately</option>
+              <option ng-model="contact.phone" value="phone">Once a day</option>
+              <option ng-model="contact.phone" value="phone">Twice a day</option>
+              <option ng-model="contact.email" value="email">Thrice a aday</option>
+              <option ng-model="contact.phone" value="phone">Every hour</option>
+              <option ng-model="contact.phone" value="phone">Every 2 hours</option>
+              <option ng-model="contact.email" value="email">Every 3 hours</option>
+              <option ng-model="contact.email" value="email">Every 4 hours</option>
+              <option ng-model="contact.email" value="email">Every 6 hours</option>
+              <option ng-model="contact.email" value="email">Every 8 hours</option>
+              <option ng-model="contact.email" value="email">Every 12 hours</option>
+              <option ng-model="contact.phone" value="phone">On alternate days</option>
+              <option ng-model="contact.phone" value="phone">Once a week</option>
+              <option ng-model="contact.email" value="email">Twice a week</option>
+              <option ng-model="contact.phone" value="phone">Thrice a week</option>
+              <option ng-model="contact.phone" value="phone">Every 2 weeks</option>
+              <option ng-model="contact.email" value="email">Every 3 weeks</option>
+              <option ng-model="contact.phone" value="phone">Once a month</option>
+              <option ng-model="contact.phone" value="phone">5 times a day</option>
+              <option ng-model="contact.email" value="email">4 days a week</option>
+              <option ng-model="contact.email" value="email">5 days a week</option>
+              <option ng-model="contact.email" value="email">6 days a week</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label for="contactType">Select Route:</label>
+          <select id="contactType" name="contactType">
+              <option ng-model="contact.phon" value="phone"> </option>
+              <option ng-model="contact.email" value="email">Intramuscular</option>
+              <option ng-model="contact.phone" value="phone">Intravenous</option>
+              <option ng-model="contact.phone" value="phone">Oral</option>
+              <option ng-model="contact.email" value="email">Per Vaginal</option>
+              <option ng-model="contact.phone" value="phone">Sub Cutaneous</option>
+              <option ng-model="contact.phone" value="phone">Per Rectum</option>
+              <option ng-model="contact.email" value="email">Sub Lingual</option>
+              <option ng-model="contact.phone" value="phone">Nasogastric</option>
+              <option ng-model="contact.phone" value="phone">Intradermal</option>
+              <option ng-model="contact.email" value="email">Intraperitoneal</option>
+              <option ng-model="contact.phone" value="phone">Intrathecal</option>
+              <option ng-model="contact.phone" value="phone">Intraosseous</option>
+              <option ng-model="contact.email" value="email">Topical</option>
+              <option ng-model="contact.phone" value="phone">Nasal</option>
+              <option ng-model="contact.phone" value="phone">Inhalation</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label>{{'dispensingPrescriptionForm.duration' | message}}</label>
+          <input type="number" min="0" step="1" oninput="validity.valid||(value='');" style="width: 40px;"/>
+        </fieldset>
+        <fieldset>
+          <label for="contactType">Select Duration Units:</label>
+          <select id="contactType" name="contactType">
+              <option ng-model="contact.phon" value="phone"> </option>
+              <option ng-model="contact.email" value="email">Day(s)</option>
+              <option ng-model="contact.phone" value="phone">Weeks(s)</option>
+              <option ng-model="contact.phone" value="phone">Month(s)</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label for="contactType">Select Instructions:</label>
+          <select id="contactType" name="contactType">
+              <option ng-model="contact.phon" value="phone"> </option>
+              <option ng-model="contact.email" value="email">Before meals</option>
+              <option ng-model="contact.phone" value="phone">Empty stomach</option>
+              <option ng-model="contact.phone" value="phone">In the morning</option>
+              <option ng-model="contact.email" value="email">In the evening</option>
+              <option ng-model="contact.phone" value="phone">At bedtime</option>
+              <option ng-model="contact.phone" value="phone">Immediately</option>
+              <option ng-model="contact.email" value="email">As directed</option>
+          </select>
+        </fieldset>
+        <fieldset>
+          <label>{{'dispensingPrescriptionForm.additionalInstructions' | message}}</label> 
+          <input id="contact" ng-model="vm.Prescription.contact" type="text" style="width: 120px;"/>
+        </fieldset>
+      </form>
+
+      <div class="modal-footer">
+        <button ng-click="$hide()">{{'stockAddProductsModal.cancel' | message}}</button>
+        <button ng-click="vm.print()" class="primary">
+          {{'dispensingPrescriptionDetailsModal.print' | message}}
+        </button>
+        <button ng-click="vm.confirm()" class="primary">
+          {{'dispensingPrescriptionDetailsModal.save' | message}}
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+{
+  "pointOfDeliveryView.deliveriesAt": "View Deliveries at ${facility}",
+  "prepackingDetails.cancel": "Cancel",
+  "prepackingDetails.clear": "Clear",
+  "prepackingDetails.authorise": "Authorise",
+  "prepackingDetails.delete": "Delete",
+  "prepackingDetails.productCode": "Product Code",
+  "prepackingDetails.product": "Product",
+  "prepackingDetails.batchNumber": "Batch Number",
+  "prepackingDetails.expiryDate": "Expiry Date",
+  "prepackingDetails.soh": "Stock on Hand",
+  "prepackingDetails.prepackSize": "Prepack Size",
+  "prepackingDetails.numberOfPrepacks": "Number of Prepacks",
+  "prepackingDetails.remainingStock": "Remaining Stock",
+  "prepackingDetails.update": "Update"
+}

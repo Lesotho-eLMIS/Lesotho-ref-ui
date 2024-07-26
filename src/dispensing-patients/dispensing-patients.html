@@ -1,0 +1,73 @@
+<h2>{{'dispensingPatients.patients.label' | message}}</h2>
+
+<form class="sidebar" ng-submit="vm.searchPatients()">
+  <label for="orderingFacility">{{'dispensingPatients.patientNumber' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.patientNumber">
+  <label for="lastName">{{'dispensingPatients.lastName' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.lastName">
+  <label for="firstName">{{'dispensingPatients.firstName' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.firstName">
+  <label for="nationalidNumber">{{'dispensingPatients.nationalidNumber' | message}}</label>
+  <input class="form-control" type="text" style="width: 150px;" ng-model="vm.patientParams.nationalId">
+  <label for="dateofBirth">{{'dispensingPatients.dateofBirth' | message}}</label>
+  <input id="dateOfBirth" type="date" style="width: 90px;" ng-model="vm.patientParams.dateOfBirth" max-date="vm.maxDate" inputmode="none"/>
+  <label for="contactNumber">{{'dispensingPatients.contactNumber' | message}}</label>
+  <input class="form-control" value="+266 " type="text" style="width: 150px;" ng-model="vm.patientParams.contactNumber">
+  <fieldset class="form-group">
+    <legend>{{'dispensingPatients.facility' | message}}</legend>
+    <label class="radio">
+        <input type="radio" ng-model="vm.patientParams.facilityLocation" ng-value="true" ng-required="vm.patientParams.facilityLocation === undefined"/>
+        {{'dispensingPatients.facilityLocal' | message}}
+    </label>
+    <label class="radio">
+        <input type="radio" ng-model="vm.patientParams.facilityLocation" ng-value="false" ng-required="vm.patientParams.facilityLocation === undefined"/>
+        {{'dispensingPatients.facilityNational' | message}}
+    </label>
+  </fieldset>
+  <input type="submit" class="btn btn-primary" value="{{'dispensingPatients.search' | message}}"/>
+</form>
+
+<section class="openlmis-table-container">
+  <openlmis-sort options="vm.options"/>
+  <section class="is-primary">
+    <form class="form-inline" name="productForm"> 
+        <button type="button" ng-click="vm.addPatientForm()" class="add">{{'dispensingPatients.addPatient' | message}}</button> <!--ui-sref="openlmis.dispensing.add.patient.form"-->
+    </form>
+  </section>
+  <table>
+    <!-- <caption ng-if="!vm.patients || vm.patients.length === 0">
+        {{'dispensingPatients.patients.error' | message}}
+    </caption> -->
+    <thead>
+        <tr>
+            <th>{{'dispensingPatients.patientNumber' | message}}</th>
+            <th>{{'dispensingPatients.facility' | message}}</th>
+            <th>{{'dispensingPatients.lastName' | message}}</th>
+            <th>{{'dispensingPatients.firstName' | message}}</th>
+            <th>{{'dispensingPatients.nationalidNumber' | message}}</th>
+            <th>{{'dispensingPatients.dateofBirth' | message}}</th>
+            <th>{{'dispensingPatients.contactNumber' | message}}</th>
+            <th>{{'dispensingPatients.createdDate' | message}}</th>
+            <th class="col-sticky sticky-right">{{'dispensingPatients.actions' | message}}</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="patient in vm.patientsData">
+        
+        <td>{{patient.patientNumber}}</td>
+        <th>{{patient.facilityId}}</th>
+        <td>{{patient.personDto.lastName}}</td>
+        <td>{{patient.personDto.firstName}}</td>
+        <td>{{patient.personDto.nationalId}}</td>
+        <td>{{patient.personDto.dateOfBirth}}</td>
+        <td>{{patient.personDto.contacts[0].contactValue}}</td>
+        <td>{{patient.registrationDate | openlmisDate}}</td>
+        <td>
+          <button class="primary" ui-sref="openlmis.dispensing.patients.form">{{'dispensingPatients.edit' | message}}</button>
+          <button type="button" class="btn btn-primary add" ui-sref="openlmis.dispensing.prescriptions.form">{{'dispensingPatients.addPrescription' | message}}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <openlmis-pagination/> -->
+</section>

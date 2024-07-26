@@ -1,0 +1,39 @@
+<h2>Facility Prepack Details - Program</h2>
+
+<section class="openlmis-table-container">
+    <table suppress-tr-openlmis-invalid>
+        <thead>
+                <tr>
+                    <th>{{'prepackingDetails.productCode'|message}}</th>
+                    <th>{{'prepackingDetails.product'|message}}</th>
+                    <th>{{'prepackingDetails.batchNumber'|message}}</th>
+                    <th>{{'prepackingDetails.expiryDate'|message}}</th>
+                    <th>{{'prepackingDetails.soh'|message}}</th>
+                    <th>{{'prepackingDetails.prepackSize'|message}}</th>
+                    <th>{{'prepackingDetails.numberOfPrepacks'|message}}</th>
+                    <th>{{'prepackingDetails.remainingStock'|message}}</th> 
+                    <!-- <th>Action</th>                   -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.prepackedProducts">
+                    <td>{{item.productCode}}</td>
+                    <td>{{item.productName}}</td>
+                    <td>{{item.batchNumber}}</td>
+                    <td>{{item.expiryDate | openlmisDate}}</td>
+                    <td>{{item.soh}}</td>
+                    <td>{{item.prepackSize}}</td>
+                    <td>{{item.numberOfPrepacks}}</td>
+                    <td>{{item.remainingStock}}</td>
+                    <!-- <td><button  ng-click="vm.authorizePrepack(item.prepackingEventId)">
+                        {{'prepackingDetails.cancel'|message}}
+                      </button></td> -->
+                </tr>
+            </tbody>
+        </table>
+        <openlmis-pagination list="vm.prepackLineItems" paged-list="vm.prepackLineItems"/>
+    </section>
+
+
+<ng-include src="'prepacking-details/prepacking-details-toolbar.html'"></ng-include>
+

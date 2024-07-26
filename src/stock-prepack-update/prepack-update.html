@@ -1,0 +1,70 @@
+<h2>Facility Prepack Details - Program</h2>
+
+<section class="openlmis-table-container">
+    <section class="is-primary">
+        <form class="form-inline" ng-submit="vm.addProduct()" name="productForm">
+            <div>
+                <label for="productSelect">Product</label>
+                <select id="productSelect" ng-model="vm.selectedOrderableGroup"
+                    ng-options="orderableGroup[0].orderable.fullProductName for orderableGroup in vm.orderableGroups"
+                    ng-change="vm.orderableSelectionChanged()"
+                    required>
+                </select>
+            </div>
+            <div ng-if="vm.selectedOrderableHasLots">
+                <label for="lotSelect">{{'prepackUpdate.lotCode' | message}}</label>
+                <select id="lotSelect" ng-model="vm.selectedLot"
+                    ng-options="lot.lotCode for lot in vm.lots"
+                    ng-change="vm.lotChanged()"
+                    required>
+                </select>
+            </div>
+            <button type="submit" class="add">Add</button>
+        </form>
+    </section>
+    <table suppress-tr-openlmis-invalid>
+        <thead>
+                <tr>
+                    <th>{{'prepackUpdate.productCode'|message}}</th>
+                    <th>{{'prepackUpdate.product'|message}}</th>
+                    <th>{{'prepackUpdate.batchNumber'|message}}</th>
+                    <th>{{'prepackUpdate.expiryDate'|message}}</th>
+                    <th>{{'prepackUpdate.soh'|message}}</th>
+                    <th>{{'prepackUpdate.prepackSize'|message}}</th>
+                    <th>{{'prepackUpdate.numberOfPrepacks'|message}}</th>
+                    <th>{{'prepackUpdate.quantityToPrepack'|message}}</th>
+                    <th>{{'prepackUpdate.remainingStock'|message}}</th>
+                    <th>{{'prepackUpdate.action'|message}}</th>                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lineItem in vm.prepackedProducts">
+                    <td>{{lineItem.productCode}}</td>
+                    <td>{{lineItem.productName}}</td>
+                    <td>{{lineItem.batchNumber}}</td>
+                    <td>{{lineItem.expiryDate | openlmisDate}}</td>
+                    <td>{{lineItem.soh}}</td>
+                    <td><input class="form-control" ng-model="lineItem.prepackSize" ng-change="vm.validatePrepackQuantity(lineItem)" type="number" min="0" style="width: 70px;"></td>
+                    <td><input class="form-control" ng-model="lineItem.numberOfPrepacks" ng-change="vm.validatePrepackQuantity(lineItem)" type="number" min="0" style="width: 70px;"></td>
+                    <td openlmis-invalid="{{lineItem.$errors.prepackQuantityInvalid}}" class="digit-cell">
+                        <input class="form-control" ng-model="lineItem.prepackQuantity" ng-class="{'error': lineItem.$errors.prepackQuantityInvalid}"   
+                        ng-blur="vm.validatePrepackQuantity(lineItem)"                      
+                        readonly value="{{(lineItem.prepackSize*lineItem.numberOfPrepacks)}}" 
+                        type="number" style="width: 120px;" min="0"> 
+                    </td>
+                    <!-- <td>{{lineItem.remainingStock}}</td> -->
+                    <td><input class="form-control" ng-model="lineItem.remainingStock" readonly  
+                        type="number" style="width: 120px;" min="0">
+                    </td>
+                    <td>
+                        <button type="button" class="danger" ng-click="vm.remove(lineItem)">{{'prepackUpdate.remove'| message}}</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <openlmis-pagination list="vm.prepackLineItems" paged-list="vm.prepackLineItems"/>
+    </section>
+
+
+<ng-include src="'stock-prepack-update/prepacking-update-toolbar.html'"></ng-include>
+

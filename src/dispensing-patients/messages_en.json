@@ -1,0 +1,21 @@
+{
+  "dispensingPatients.title": "Patients",
+  "dispensingPatients.patients.label": "Patients",
+  "dispensingPatients.patientNumber": "Patient Number",
+  "dispensingPatients.addPatient": "Add Patient",
+  "dispensingPatients.search": "Search",
+  "dispensingPatients.createdDate": "Created Date",
+  "dispensingPatients.actions": "Actions",
+  "dispensingPatients.firstName": "First Name",
+  "dispensingPatients.lastName": "Last Name",
+  "dispensingPatients.view": "View",
+  "dispensingPatients.nationalidNumber": "National Id Number",
+  "dispensingPatients.edit": "Edit",
+  "dispensingPatients.addPrescription": "Add Prescription",
+  "dispensingPatients.patients.error": "There are no matches for patient.",
+  "dispensingPatients.dateofBirth": "Date of Birth",
+  "dispensingPatients.facility": "Facility",
+  "dispensingPatients.facilityLocal": "Local",
+  "dispensingPatients.facilityNational" :" National",
+  "dispensingPatients.contactNumber" :" Contact Number"
+}

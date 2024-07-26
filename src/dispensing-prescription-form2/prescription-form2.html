@@ -1,0 +1,115 @@
+<h2>View Prescription Form</h2>
+
+<form class="sidebar">
+
+    <fieldset class="form-group">
+        <label for="lastName">Status</label>
+        <input class="form-control" type="text" value="Initiated" disabled>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="PrescriptionNumber">Follow up date</label>
+        <input id="lineItem.occurredDate" type="date" style="width: 90px;"  value="2024-12-09" disabled/>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="firstName">Created date</label>
+        <input id="lineItem.occurredDate" type="date" style="width: 90px;" value="2024-12-07"
+            ng-change="vm.validateDate(lineItem)" max-date="vm.maxDate" disabled/>
+    </fieldset>
+    <fieldset class="form-group">
+        <legend>Patient type</legend>
+        <label class="radio">
+            <input type="radio"  disabled/>
+            In Patient
+        </label>
+        <label class="radio">
+            <input type="radio" name="option" value="1" checked disabled/>
+            Out Patient
+        </label>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="nationalID">Dispensing date</label>
+        <input id="lineItem.occurredDate" type="date" style="width: 90px;" value="2024-12-07" disabled/>
+    </fieldset>
+    <!-- <fieldset class="form-group">
+        <label for="nickName">Captured date</label>
+        <input id="lineItem.occurredDate" type="date" style="width: 90px;" ng-model="lineItem.occurredDate"
+            ng-change="vm.validateDate(lineItem)" max-date="vm.maxDate" required inputmode="none"/>
+    </fieldset> -->
+    <!-- <fieldset class="form-group">
+        <label>
+            <input type="checkbox" ng-model="vm.Prescription.allowNotify"/>
+            Voided
+        </label>
+    </fieldset> -->
+</form>
+
+<!-- <section id="newPrescriptionForm"> -->
+    <section class="openlmis-table-container">
+        <section class="is-primary">
+            <form class="form-inline" name="productForm">
+                <!-- <button type="button" ng-click="vm.addContact()" class="add">Add Product</button> -->
+            </form>
+        </section>
+        <table suppress-tr-openlmis-invalid>
+            <thead>
+                <tr>
+                    <th>{{'dispensingPrescriptionForm.prescribedProduct' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.substituteProduct' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.batchNumber' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.dose' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.doseUnits' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.frequency' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.route' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.duration' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.durationUnits' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.instructions' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.additionalInstructions' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.quantityPrescribed' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.quantityDispensed' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.servedInternally' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.comments' | message}}</th>
+                    <th>{{'dispensingPrescriptionForm.action' | message}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Abacavir/Lamivudine 120/60 Scored Dispersible Tablets 60</td>
+                    <td> </td>
+                    <td>ABA123</td>
+                    <td>60</td>
+                    <td>Tablet(s)</td>
+                    <td>Once a day</td>
+                    <td>Oral</td>
+                    <td>60</td>
+                    <td>Day(s)</td>
+                    <td>At bedtime</td>
+                    <td>
+                        <input id="contact" ng-model="vm.Prescription.InstructionDetails" type="text" style="width: 120px;"/>
+                    </td>
+                    <td>60</td>
+                    <td>
+                        <input type="number" min="0" step="1" oninput="validity.valid||(value='');" style="width: 50px;"/>
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="vm.Prescription.allowNotify"/>
+                    </td>
+                    <td>
+                        <input id="contact" ng-model="vm.Prescription.comments" type="text" style="width: 120px;"/>
+                    </td>
+                    <td>
+                        <button type="button" class="primary" ng-click="removeContact($index)">Substitute</button>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </section>
+<!-- </section> -->
+
+<div class="openlmis-toolbar">
+    <button ui-sref="^">{{'dispensingPrescriptionForm.cancel' | message}}</button>
+    <div class="button-group primary">
+        <button class="primary" form="newPrescriptionForm" type="submit">Serve</button>
+        <button ng-if="vm.updateMode && vm.pendingVerificationEmail" ng-click="vm.sendVerificationEmail()">{{ 'dispensingPrescriptionForm.sendVerificationEmail' | message }}</button>
+    </div>
+</div>
